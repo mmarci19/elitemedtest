@@ -1,0 +1,238 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+
+<script>
+
+class Player {
+  constructor(x,y, team,pos) {
+    this.x = x;
+    this.y = y;
+    this.team = team;
+    this.pos = pos; 
+  }
+}
+
+
+var coords = [{x: 100, y: 200}, {x: 300, y: 400}, {x: 500, y: 200}, {x: 600, y: 300}]
+
+
+function redrawPitch(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+// Outer lines
+ctx.beginPath();
+ctx.rect(0,0, canvas.width, canvas.height);
+ctx.fillStyle = "rgba(62, 90, 44, 0.5)";
+ctx.fill();
+ctx.lineWidth = 4;
+ctx.strokeStyle = "#FFF";
+ctx.stroke();
+ctx.closePath();
+
+ctx.fillStyle = "#FFF";
+
+// Mid line
+ctx.beginPath();
+ctx.moveTo(canvas.width / 2, 0);
+ctx.lineTo(canvas.width / 2, canvas.height);
+ctx.stroke();
+ctx.closePath();
+
+//Mid circle
+//ctx.beginPath()
+//ctx.arc(canvas.width / 2, canvas.height / 2, 73, 0, 2*Math.PI, false);
+//ctx.stroke();
+//ctx.closePath();
+//Mid point
+ctx.beginPath()
+ctx.arc(canvas.width / 2, canvas.height / 2, 2, 0, 2*Math.PI, false);
+ctx.fill();
+ctx.closePath();
+
+//Home penalty box
+//ctx.beginPath();
+//ctx.rect(0, (canvas.height - 322) / 2, 132, 322);
+//ctx.stroke();
+//ctx.closePath();
+//Home goal box
+ctx.beginPath();
+ctx.rect(0, (canvas.height - 146) / 2, 44, 146);
+ctx.stroke();
+ctx.closePath();
+//Home goal 
+ctx.beginPath();
+ctx.moveTo(1, (canvas.height / 2) - 22);
+ctx.lineTo(1, (canvas.height / 2) + 22);
+ctx.lineWidth = 4;
+ctx.stroke();
+ctx.closePath();
+ctx.lineWidth = 4;
+
+
+//Home half circle
+ctx.beginPath()
+ctx.arc(canvas.width/2, canvas.height / 2, 73, 0, 2*Math.PI, true);
+ctx.stroke();
+ctx.closePath();
+
+//Away penalty box
+//ctx.beginPath();
+//ctx.rect(canvas.width-132, (canvas.height - 322) / 2, 132, 322);
+//ctx.stroke();
+//ctx.closePath();
+
+//Away goal box
+ctx.beginPath();
+ctx.rect(canvas.width-44, (canvas.height - 146) / 2, 44, 146);
+ctx.stroke();
+ctx.closePath(); 
+
+//Away goal 
+ctx.beginPath();
+ctx.moveTo(canvas.width-1, (canvas.height / 2) - 22);
+ctx.lineTo(canvas.width-1, (canvas.height / 2) + 22);
+ctx.lineWidth = 4;
+ctx.stroke();
+ctx.closePath();
+ctx.lineWidth = 4;
+
+//Away half circle
+//ctx.beginPath()
+//ctx.arc(canvas.width-88, canvas.height / 2, 73, 0.71*Math.PI, 1.29*Math.PI, false);
+//ctx.stroke();
+//ctx.closePath();
+    
+//Home L corner
+ctx.beginPath()
+ctx.arc(0, 0, 8, 0, 0.5*Math.PI, false);
+ctx.stroke();
+ctx.closePath();
+//Home R corner
+ctx.beginPath()
+ctx.arc(0, canvas.height, 8, 0, 2*Math.PI, true);
+ctx.stroke();
+ctx.closePath();
+//Away R corner
+ctx.beginPath()
+ctx.arc(canvas.width, 0, 8, 0.5*Math.PI, 1*Math.PI, false);
+ctx.stroke();
+ctx.closePath();
+//Away L corner
+ctx.beginPath()
+ctx.arc(canvas.width, canvas.height, 8, 1*Math.PI, 1.5*Math.PI, false);
+ctx.stroke();
+ctx.closePath();
+}
+
+function drawPlayers(coords){
+
+  for (i = 0; i<coords.length; i++){
+    ctx.fillStyle = "#FABE03"
+    ctx.beginPath()
+    ctx.arc(coords[i].x, coords[i].y, 10, 0, 2*Math.PI, true);
+    ctx.fill();
+    ctx.closePath();
+
+  }
+	
+}
+
+var intervalId = setInterval(function() {
+  
+  redrawPitch()
+  for (i = 0; i<coords.length; i++){
+  coords[i] = {x: Math.floor(Math.random() * canvas.width) + 1,y: Math.floor(Math.random() * canvas.height) + 1}
+  }
+  drawPlayers(coords)
+
+}, 1000);
+
+
+const consumer = kafka.consumer({ groupId: '123' })
+
+await consumer.connect()
+await consumer.subscribe({ topic: '123', fromBeginning: true })
+
+await consumer.run({
+  eachMessage: async ({ topic, partition, message }) => {
+
+    var arr_from_json = JSON.parse(message.value);
+    var detections = arr_from_json.detections
+
+    coords=[]
+
+    detections.forEach(element => {
+      coords.append({x: element.score.x,y: element.score.y})
+    });
+    redrawPitch()
+    drawPlayers(coords)
+
+  },
+})
+
+</script>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link" href="index.html">Main Menu</a>
+        </li>
+  
+      <li class="nav-item">
+          <a class="nav-link" href="settings.html">Camera Settings</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" href="matches.html">Matches</a>
+        </li>
+       
+  </ul>
+
+</nav>
+  
+
+<!DOCTYPE html>
+  <!-- Links -->
+
+<div class="container">
+
+    <h1 class="display-4 text-center"style= "margin-top:10px">
+        Mini Map 
+    </h1>
+    <div id="canvascontainer" class="container text-center" style="margin-top:30px">
+        
+        <canvas id="pitch" width="600" height="318">
+        </canvas>
+        <span id="debug"></span>
+
+    </div>
+    
+    </canvas>
+</div>
+
+
+</html>
+<script>
+
+class Point{
+    constructor(x,y){
+        this.x = x;
+        this.y = y;
+    } 
+}
+
+
+  var canvas = document.getElementById('pitch');
+  var ctx = canvas.getContext('2d');
+  
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,24 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "-",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mm",
+  "license": "ISC",
+  "dependencies": {
+    "consume": "^0.0.3",
+    "cors": "^2.8.5",
+    "debug": "^4.3.3",
+    "express": "^4.17.2",
+    "jade": "~1.9.1",
+    "kafka-node": "^5.0.0",
+    "kafkajs": "^1.15.0",
+    "produce": "^0.4.1",
+    "pug": "^3.0.2",
+    "utf8": "^3.0.0",
+    "vue-soccer-field": "^1.0.5"
+  }
+}

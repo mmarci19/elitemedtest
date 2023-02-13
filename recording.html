@@ -1,0 +1,698 @@
+<script src="utf8.js"></script>
+
+    <script>
+      var matchID=0;
+      var coords = []
+	
+     var x_coords = []
+     
+     var y_coords = []
+      window.onload = function(){
+          
+
+          let prm = new URLSearchParams(window.location.search);
+          if(prm.has('id')){
+            prm = prm.get('id');
+          }
+          matchID = prm;
+        }
+      
+      </script>
+      
+
+      <style>
+
+.loader,
+        .loader:after {
+            border-radius: 50%;
+            width: 10em;
+            height: 10em;
+        }
+        .loader {            
+            
+            margin: 60px auto;
+            font-size: 10px;
+            position: relative;
+            text-indent: -9999em;
+            border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+            border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+            border-left: 1.1em solid #ffffff;
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-animation: load8 1.1s infinite linear;
+            animation: load8 1.1s infinite linear;
+        }
+        @-webkit-keyframes load8 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes load8 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        #loadingDiv {
+            padding-top: 200px;
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-color:#000;
+        }
+
+        body{
+          overflow: hidden;
+        }
+      </style>
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <!-- Bootstrap -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <head>
+    
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Recording</title>
+      <meta name="description" content="Core HTML Project">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+      <!-- External CSS -->
+      <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+      <link rel="stylesheet" href="vendor/select2/select2.min.css">
+      <link rel="stylesheet" href="vendor/owlcarousel/owl.carousel.min.css">
+      <link rel="stylesheet" href="vendor/lightcase/lightcase.css">
+    
+      <!-- Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Work+Sans:300,400,700" rel="stylesheet">
+    
+      <!-- CSS -->
+      <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+      <link href="https://file.myfontastic.com/7vRKgqrN3iFEnLHuqYhYuL/icons.css" rel="stylesheet">
+    
+      <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+      <!-- Bootstrap -->
+      <script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="Landing page template built with HTML and Bootstrap 4 for presenting training courses, classes, workshops and for convincing visitors to register using the form.">
+        <meta name="author" content="Inovatik">
+    
+        <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+      <meta property="og:site_name" content="" /> <!-- website name -->
+      <meta property="og:site" content="" /> <!-- website link -->
+      <meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+      <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+      <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+      <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+      <meta property="og:type" content="article" />
+    
+        <!-- Website Title -->
+        <title>ASAP</title>
+        
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,700i&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+	  <link href="css/magnific-popup.css" rel="stylesheet">
+	  <link href="css/styles.css" rel="stylesheet">
+    
+
+  <style>
+
+body{
+  color: whitesmoke;
+  background-color:rgb(41, 37, 37);
+}
+    
+    </style>
+  	<!-- Favicon  -->
+    <link rel="icon" href="icon.png">
+</head>
+
+  <body data-spy="scroll" data-target=".fixed-top">
+    <div class="spinner-wrapper">
+      <div class="spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+      </div>
+    </div>
+      <!-- end of preloader -->
+          <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+
+      <!-- Text Logo - Use this if you don't have a graphic logo -->
+      <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Corso</a> -->
+
+
+        <!-- Image Logo -->
+        <a href="index.html"><img src="logo.png" width=6% height=6% ></a> 
+        
+      <!-- Mobile Menu Toggle Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-awesome fas fa-bars"></span>
+          <span class="navbar-toggler-awesome fas fa-times"></span>
+      </button>
+      <!-- end of mobile menu toggle button -->
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="index.html">Main Menu <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="settings.html">Settings</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="matches.html">Matches</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link page-scroll" href="recording.html">Recording</a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link page-scroll" href="pitch-selector.html">Pitch Selector</a>
+          </li>
+        </ul>
+       
+    </div>
+  </nav> <!-- end of navbar -->
+  <!-- end of navigation -->
+
+
+    
+    <div class="container" style="margin-top: 120px">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="text-container">
+    
+                <h1 style="color: whitesmoke">Recording</h1>
+
+                  
+                                 </div> <!-- end of text-container -->
+          </div> <!-- end of col -->
+      </div> <!-- end of row -->
+    </div> <!-- end of container -->
+
+
+<!--
+    <div class="container" style="margin-top: 20px">
+      <span class="float-right">
+              
+        <button type="button" class="btn btn-warning" onclick="stopRecording()">Stop!</button>
+        <p class="display-6"> Match ID: </p>
+        <p id="idText"class="display-6 float-right"></p>
+      </span>
+    </div>
+-->
+    <script>
+    
+
+      window.onload = function(){
+        let prm = new URLSearchParams(window.location.search);
+        if(prm.has('id')){
+          prm = prm.get('id');
+        }
+        matchID = prm;
+        //document.getElementById("idText").textContent = matchID;
+      }
+
+    
+    </script>
+    
+    <div class="container">
+      <form id="stopRecordingForm" action="index.html"style="margin-top: 10px;" method="GET">
+    
+      </form>
+    
+    </div>
+  
+    <script>
+
+    var history = []
+
+    var colors = []
+$('body').append('<div style="" id="loadingDiv"><div class="loader"></div></div>');
+//setInterval(drawPlayers(x_coords,y_coords,colors),100)
+
+
+function removeLoader(){
+
+    $( "#loadingDiv" ).fadeOut(500, function() {
+      // fadeOut complete. Remove the loading div
+      $( "#loadingDiv" ).remove(); //makes page more lightweight 
+  });  
+  changeOriginalCss()
+
+}
+
+function changeOriginalCss(){
+  document.body.style="overflow: scroll"
+}
+    
+function redrawPitch(){
+    
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+    
+    // Outer lines
+    ctx.beginPath();
+    ctx.rect(0,0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(62, 90, 44, 0.5)";
+    ctx.fill();
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "#FFF";
+    ctx.stroke();
+    ctx.closePath();
+    
+    ctx.fillStyle = "#FFF";
+    
+    // Mid line
+    ctx.beginPath();
+    ctx.moveTo(canvas.width / 2, 0);
+    ctx.lineTo(canvas.width / 2, canvas.height);
+    ctx.stroke();
+    ctx.closePath();
+    
+    //Mid circle
+    //ctx.beginPath()
+    //ctx.arc(canvas.width / 2, canvas.height / 2, 73, 0, 2*Math.PI, false);
+    //ctx.stroke();
+    //ctx.closePath();
+    //Mid point
+    ctx.beginPath()
+    ctx.arc(canvas.width / 2, canvas.height / 2, 2, 0, 2*Math.PI, false);
+    ctx.fill();
+    ctx.closePath();
+    
+    
+
+   
+    //Home goal 
+    ctx.beginPath();
+    ctx.moveTo(1, (canvas.height / 2) - 22);
+    ctx.lineTo(1, (canvas.height / 2) + 22);
+    ctx.lineWidth = 4;
+    ctx.stroke();
+    ctx.closePath();
+    ctx.lineWidth = 4;
+    
+    
+    //Home half circle
+    ctx.beginPath()
+    ctx.arc(canvas.width/2, canvas.height / 2, 50, 0, 2*Math.PI, true);
+    ctx.stroke();
+    ctx.closePath();
+    
+    
+    
+    //Away goal box
+    ctx.beginPath();
+    ctx.rect(canvas.width-60, (canvas.height - 150) / 2, 60, 150);
+    
+    ctx.stroke();
+    ctx.closePath(); 
+    
+    //Away goal 
+    ctx.beginPath();
+    ctx.moveTo(canvas.width-1, (canvas.height / 2) - 22);
+    ctx.lineTo(canvas.width-1, (canvas.height / 2) + 22);
+    ctx.lineWidth = 4;
+    ctx.stroke();
+    ctx.closePath();
+    ctx.lineWidth = 4;
+    
+  
+
+ //Home goal box
+
+ ctx.beginPath();
+    ctx.rect(0, (canvas.height - 150) / 2, 60, 150);
+    ctx.stroke();
+    ctx.closePath();
+    
+    //Home L corner
+    ctx.beginPath()
+    ctx.arc(0, 0, 8, 0, 0.5*Math.PI, false);
+    ctx.stroke();
+    ctx.closePath();
+    //Home R corner
+    ctx.beginPath()
+    ctx.arc(0, canvas.height, 8, 0, 2*Math.PI, true);
+    ctx.stroke();
+    ctx.closePath();
+    //Away R corner
+    ctx.beginPath()
+    ctx.arc(canvas.width, 0, 8, 0.5*Math.PI, 1*Math.PI, false);
+    ctx.stroke();
+    ctx.closePath();
+    //Away L corner
+    ctx.beginPath()
+    ctx.arc(canvas.width, canvas.height, 8, 1*Math.PI, 1.5*Math.PI, false);
+    ctx.stroke();
+    ctx.closePath();
+    }
+    
+    function drawPlayers(coords,colors){
+		
+		for (k=0; k<coords.length; k++){
+ 
+       	for (i = 0; i<coords[k].length; i++){
+        
+            var color = `rgb(
+            ${(colors[k][i].r)},
+            ${(colors[k][i].g)},
+            ${(colors[k][i].b)},${(0.20*k)})`;
+
+
+    	    ctx.fillStyle = color;
+            ctx.beginPath()
+            ctx.arc(coords[k][i].x*0.471698113, coords[k][i].y*0.471698113, 6, 0, 2*Math.PI, true);
+           
+            //0.47169 ... -> Scaled constants
+            
+            ctx.fill();
+            ctx.closePath();
+
+    }
+  
+  }
+  
+  
+  }
+
+    </script>
+    
+    
+    <div class="container">
+        <div id="canvascontainer">
+            <!--PITCH CANVAS-->
+            <table class="tg">
+              <thead>
+                <tr>
+                  <td class="tg-0lax">
+                    <canvas style="margin-right: 50px;display:block" id="pitch" width="500" height="319">
+                    </canvas>
+                  </td>
+                 
+                  <td class="tg-0lax">
+                    <img style="margin-left:50px"width = 500, height = 319 name="frame_real" id="frame_real" style="display:block"
+              src="data:image/jpeg;base64,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" style="display:inline">
+  
+                  </td>
+                </tr>
+                <tr>
+
+                  <td class="tg-0lax">
+                    <h2 style="margin-top:30px">Mini-map</h2>
+                  </td>
+
+                  <td class="tg-0lax">
+                <h2 style="margin-left:50px; margin-top:30px">Real life</h2>
+
+                  </td>
+                </tr>
+              </thead>
+              </table>
+           
+
+            <!-- IMAGE TAG-->
+            
+  
+  
+  </div>
+  </div>
+  
+    
+    
+    <script>
+    var canvas = document.getElementById('pitch');
+    var ctx = canvas.getContext('2d');
+    redrawPitch()
+      class Point{
+          constructor(x,y){
+              this.x = x;
+              this.y = y;
+          } 
+      }
+      
+      
+       
+      
+      </script>
+
+
+
+    <script>
+
+  
+
+    function getCameras(){
+    
+    xhr = new XMLHttpRequest();
+        var url = "http://127.0.0.1:5000/get_cameras"; 
+        //var url = document.getElementById("setCamera").value
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+             //Responese handling
+             //var json = JSON.parse(xhr.responseText);
+             document.getElementById("logText").textContent = xhr.responseText;
+             //Itt lesz lekezelve, beállítva a kamerák url-je.
+             //alert(json.responseText);
+          }
+      };
+      //sample data
+      var data = `${matchID}`;
+    
+      
+        xhr.send(data);
+      
+    
+    }
+    var globalCount = 0
+    var globalLimit = 1000
+    var iterations = 0
+      var iter_count = []
+      var temp = []
+
+
+
+      function myFunction(){
+    
+    var xhr = new XMLHttpRequest();
+    var url = "http://localhost:8000/sample"; 
+   xhr.open("GET", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+    xhr.onreadystatechange = function () {
+    
+    
+      if (xhr.readyState === 4 && xhr.status === 200) {
+         //Responese handling
+ temp = []
+ tempcolors = []
+ //Responese handling
+         var json = JSON.parse(xhr.responseText);
+     
+         x_coords = json[0].x
+         y_coords = json[0].y
+        
+        
+        //alert(json[0].frame)
+        /*if(typeof json[0].image != "undefined")
+{
+  alert(json[0].image);
+} 
+  */
+
+       //alert(json[0].image)
+     
+        document.getElementById("frame_real").src = 'data:image/jpg;base64,'+ json[0].image;
+        
+        
+        if(x_coords.length != 0){
+        ////IF RECEIVED COORDINATES LENGTH NOT ZERO - KAFKA SENDS - REMOVE SPINNER
+        setTimeout(removeLoader, 100); //wait for kafka plus 1/10 second.
+        
+        ////
+        redrawPitch()
+        
+        iterations += 1   
+
+	globalCount +=1
+
+	for (i = 0; i<x_coords.length; i++){
+
+  //ATTENTION !!!!! HARD CODED Y HEIGHT !!! 
+  ////////////////
+  //////////
+          temp.push(({x: x_coords[i] ,y: 679-y_coords[i]}))
+       //////////
+  ////////////////
+  	newColors = []
+  	
+  	for (h = 0; h<json[0].colors.length; h++){
+  	//alert(json[0].colors[h])
+  	//alert(hexToRgb(json[0].colors[h]).r)
+  	newColors.push(hexToRgb(json[0].colors[h]))
+
+  	}
+  	
+    	//tempcolors.push(newColors);
+    	
+    	coords.push(temp)   
+    	colors.push(newColors)
+    	
+      }
+      
+      
+
+      ///TEST CODE FOR CROSSING THE MAP 
+        //for (i = globalCount; i<globalCount+1; i++){
+    
+        //temp.push({x: 5*i, y: 2.5*i })
+        //coords.push(temp)   
+         
+        //}
+         
+      iter_count.push(temp.length)
+
+//CHANGE SNAKE LENGTH 
+//ITERATIONS = X
+//CURRENTLY 10
+//--------
+    if(iterations == 10){
+    //--------
+
+        coords = coords.slice(iter_count[0],coords.length)
+        colors = colors.slice(iter_count[0],colors.length)
+        iterations -= 1
+        iter_count = iter_count.splice(1,iter_count.length)
+        
+    }
+
+
+//   var homeColor = [100,100,100]; //sample colors, ide jön a home team color
+  //      var awayColor = [155,155,155]; // sample colors, ide jön az away team color majd  
+         //alert(coords.length)
+        drawPlayers(coords,colors)
+
+      }
+      }
+  };
+  
+  //sample data
+  var data = `{"id":1]}`;
+  
+  xhr.send(data);
+
+
+
+
+}
+      
+      var counter = 0
+
+	function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
+
+      function test_snake(){
+        
+      redrawPitch()
+      
+
+      iterations += 1   
+
+        for (i = 0; i<x_coords.length; i++){
+      	    temp.push(({x: x_coords[i] ,y: y_coords[i]}))
+            coords.push(temp)   
+      	}
+          iter_count.push(temp.length)
+
+
+        if(iterations == 6){
+            coords = coords.slice(iter_count[0],coords.length)
+            iterations -= 1
+            iter_count = iter_count.splice(1,iter_count.length)
+        }
+      	drawPlayers(coords)
+
+
+    }
+
+    setInterval(myFunction,100)
+    //setInterval(myFunction,100);
+    
+    function stopRecording(){
+        var xhr = new XMLHttpRequest();
+        var url = "http://127.0.0.1:5000/stop_recording"; 
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+             //Responese handling
+             var json = JSON.parse(xhr.responseText);
+             document.getElementById("logText").textContent = xhr.responseText;
+          }
+      };
+      //sample data
+      var data = `{"id":${matchID}]}`;
+      
+      xhr.send(data);
+      document.getElementById("stopRecordingForm").submit();  
+      }
+    
+    </script>
+    
+
+
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+<script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+<script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+<script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+<script src="js/jquery.countdown.min.js"></script> <!-- The Final Countdown plugin for jQuery -->
+<script src="js/swiper.min.js"></script> <!--  Swiper for image and text sliders -->
+<script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+<script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+<script src="js/scripts.js"></script> <!-- Custom scripts -->
+  
