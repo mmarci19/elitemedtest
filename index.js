@@ -1,10 +1,11 @@
-const express = require('express'); //Import the express dependency
+import express from 'express'; //Import the express dependency
 const app = express();              //Instantiate an express app, the main work horse of this server
-const path = require('path');
-app.set('views', path.join(__dirname, 'views'));
+//import path from 'path';
+//app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 const port = 8000;                  //Save the port number where your server will be listening
-const utf8 = require('utf8');
+import utf8 from 'utf8';
+
 // first configure the logger provider
 //const kafkaLogging = require('kafka-node/logging');
 //kafkaLogging.setLoggerProvider(consoleLoggerProvider);
@@ -13,9 +14,29 @@ const utf8 = require('utf8');
 //var HighLevelConsumer = kafka.Consumer;
 //var KeyedMessage = kafka.KeyedMessage;
 
+import { Auth } from 'aws-amplify';
+var __dirname = "/frontend/"
+async function signUp() {
+    try {
+        const { user } = await Auth.signUp({
+            username: "szalay",
+            password: "mark",
+            attributes: {
+                email: "molnar@marton.hu",          // optional
+                phone_number: "030404213",   // optional - E.164 number convention
+                // other custom attributes 
+            },
+            autoSignIn: { // optional - enables auto sign in after user is confirmed
+                enabled: true,
+            }
+        });
+        console.log(user);
+    } catch (error) {
+        console.log('error signing up:', error);
+    }
+}
 
-
-
+signUp()
 
 app.set('view engine', 'pug');
 
@@ -30,8 +51,7 @@ app.listen(port, () => {            //server starts listening for any attempts f
 });
 
 
-var fs = require('fs');
-app.use(express.static(__dirname));
+import fs from 'fs';
 
 console.log('Hello');
 
@@ -43,7 +63,7 @@ app.get('/',function(req,res){
     res.send(data);
 })
 
-const cors = require('cors');
+import cors  from 'cors';
 app.use(cors({credentials: true, origin: true}));
 
 app.get('/sample', function(req,res){
